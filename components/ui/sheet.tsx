@@ -7,21 +7,24 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
 
-function Sheet({ ...props }: SheetPrimitive.Root.Props) {
-  return <SheetPrimitive.Root data-slot="sheet" {...props} />
-}
+const Sheet=SheetPrimitive.Root
+const SheetTrigger= SheetPrimitive.Trigger
+const SheetPortal =SheetPrimitive.Portal
+// function Sheet({ ...props }: SheetPrimitive.Root.Props) {
+//   return <SheetPrimitive.Root data-slot="sheet" {...props} />
+// }
 
-function SheetTrigger({ ...props }: SheetPrimitive.Trigger.Props) {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />
-}
+// function SheetTrigger({ ...props }: SheetPrimitive.Trigger.Props) {
+//   return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />
+// }
 
-function SheetClose({ ...props }: SheetPrimitive.Close.Props) {
-  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />
-}
+// function SheetClose({ ...props }: SheetPrimitive.Close.Props) {
+//   return <SheetPrimitive.Close data-slot="sheet-close" {...props} />
+// }
 
-function SheetPortal({ ...props }: SheetPrimitive.Portal.Props) {
-  return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
-}
+// function SheetPortal({ ...props }: SheetPrimitive.Portal.Props) {
+//   return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />
+// }
 
 function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
   return (
@@ -122,6 +125,7 @@ function SheetDescription({
     />
   )
 }
+const SheetClose =SheetPrimitive.Close;
 
 export {
   Sheet,
