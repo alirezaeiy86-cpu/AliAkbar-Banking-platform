@@ -1,4 +1,5 @@
 "use client"
+import PlaidLink from "./PlaidLink"
 import Footer from "./Footer"
 import {
     Sheet,
@@ -77,7 +78,8 @@ const MobileNav =({ user }:
                         
                     )
                  })}
-                 User
+
+                    <PlaidLink  user={user}/>
                     </nav>
                          
                  </SheetClose>

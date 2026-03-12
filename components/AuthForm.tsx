@@ -195,7 +195,7 @@ const AuthForm = ({ type } : { type : string }) => {
             </>
            )}
 
-           <CustumInput  control={form.control} name="email" label="Email" placeholder="Enter your UserName"/>
+           <CustumInput  control={form.control} name="email" label="Email" placeholder="Enter your Email"/>
 
             <CustumInput control={form.control} name="password" label="Passowrd" placeholder="Enter your password"/>
 
