@@ -41,6 +41,7 @@ import { authformSchema } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
 import { useRouter } from 'next/navigation'
+import PlaidLink from './PlaidLink'
 
 
 
@@ -82,8 +83,24 @@ const AuthForm = ({ type } : { type : string }) => {
       setIsLoading(true);
 
       try{
+       
         if(type === 'sign-up'){
-          const newUser= await signUp(data)
+           const  userData={
+          firstName:data.firstName!,
+          lastName:data.lastName!,
+          address1:data.address1!,
+          city:data.city!,
+          state:data.state!,
+          postalCode:data.postalCode!,
+          dateOfBirth:data.dateOfBirth!,
+          ssn:data.ssn!,
+          email:data.email,
+          password:data.password,
+
+          
+
+         }
+          const newUser= await signUp(userData)
             
           setUser(newUser);
           
@@ -151,10 +168,11 @@ const AuthForm = ({ type } : { type : string }) => {
         </header>
       {user ?  (
         <div className="flex flex-col gap-4">
-            {/* PlaidLink*/}
+            <PlaidLink user={user} variant="primary"/>
         </div>
 
-      ):(
+      ): (
+         
         <>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
@@ -214,75 +232,11 @@ const AuthForm = ({ type } : { type : string }) => {
             : 'sign-in'
            }
            </Link>
-    </footer> 
-        {/* <Form {...form}>
-        
-        
-        <form className=' w-[420] space-y-8 '  onSubmit={form.handleSubmit(onSubmit)} >
-          {type==='sign-up' && (
-            <>
-            <div className='flex gap-4'>
-            <CustumInput  control={form.control} name="firstName" label="Fist Name" placeholder="Enter your Your Fist Name"/>
-            <CustumInput  control={form.control} name="lastName" label="Last Name" placeholder="Enter your Your last Name"/>
-            </div>
-            <CustumInput  control={form.control} name="address1" label="Address" placeholder="Enter your Your specific address"/>
-            <div className='flex gap-4'>
-            <CustumInput  control={form.control} name="state" label="State" placeholder="Example: NY"/>
-            <CustumInput  control={form.control} name="postalCode" label="Postal Code" placeholder="Example: 11101"/>
-            </div>
-             <div className='flex gap-4'>
-            <CustumInput  control={form.control} name="dateOfBirth" label="Date of birth" placeholder="Example: YYYY-MM-DD"/>
-            <CustumInput  control={form.control} name="ssn" label="SSN" placeholder="Example:1234"/>
-             </div>
-            </>
-          )}
-          <FieldGroup className=''>
-            
-            <CustumInput  control={form.control} name="email" label="Email" placeholder="Enter your UserName"/>
-
-            <CustumInput control={form.control} name="password" label="Passowrd" placeholder="Enter your password"/>
-
-            
-          </FieldGroup>
-        </form>
-      
-      
-        <form >
-          
-          <div className='flex flex-col gap-5 '>
-            <Button type="submit" disabled={isLoading} className="form-btn mt-2">
-            
-            {isLoading ? (
-              <>
-              <Loader2 size={20}
-              className='animate-spin'/> &nbsp;
-               Loading...
-              </>
-             
-            ) : type==='sign-in'
-              ? 'Sign In' : 'Sign-up'
-          }
-          </Button>
-          </div>
-        </form>
-      
-    </Form>
-
-    <footer className='flex justify-center gap-1'>
-          <p className='text-14 font-normal text-gray-600'>
-            {type ==='sign-in'
-          ? "Don't have an account?"
-           : "Already have an account?"}</p>
-           <Link className='form-link' href={type==='sign-in' ? '/sign-up'
-            : '/sign-in'
-           }>
-            {type==='sign-in' ? 'sign-up'
-            : 'sign-in'
-           }
-           </Link>
-    </footer> */}
-        </>
-      )}
+     </footer> 
+    
+       
+    </>
+    )}
     </section>
   
 )}
