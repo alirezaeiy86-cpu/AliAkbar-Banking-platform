@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import {Elements, useElements, useStripe} from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,8 +38,8 @@ const stripePromise =loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
 const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
   //const stirpe =useStripe
-  const stripe = useStripe();
-  const elements = useElements();
+  // const stripe = useStripe();
+  // const elements = useElements();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,21 +77,21 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
       console.log("SendrID",senderBank);
       // create transfer transaction
       if (transfer) {
-        if(!stripe || !elements){
-          console.error("Stripe has not loded");
-          return;
-        }
-        const {error} = await stripe?.confirmPayment({
-          elements,
-          confirmParams:{
-            return_url:`${window.location.origin}/success`,
-          },
-        });
-        if(error){
-          console.error("Error i confirm Stripe Payment");
-          setIsLoading(false);
-          return;
-        }
+        // if(!stripe || !elements){
+        //   console.error("Stripe has not loded");
+        //   return;
+        // }
+        // const {error} = await stripe?.confirmPayment({
+        //   elements,
+        //   confirmParams:{
+        //     return_url:`${window.location.origin}/success`,
+        //   },
+        // });
+        // if(error){
+        //   console.error("Error i confirm Stripe Payment");
+        //   setIsLoading(false);
+        //   return;
+        // }
         const transaction = {
           name: data.name,
           amount: data.amount,
